@@ -1,0 +1,44 @@
+<section class="books-list-header container">
+  <h1 class="books-list__title">My library</h1>
+</section>
+
+<article class="books-list container">
+  <div class="search">
+    <app-book-search></app-book-search>
+  </div>
+
+  <div class="books-list__items-wrapper">
+    @for (book of (booksListObservable | async); let i = $index; track book.title) {
+      <mat-card class="books-list__item"
+              [class.-hidden-animated]="!book.visible"
+              (click)="showDetails(book, i)"
+      >
+        <mat-card-header>
+          <mat-card-title>{{book.title}}, <br/>{{book.year_of_publication}}</mat-card-title>
+          <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content class="books-list__book-image-wrapper">
+          @if (book.cover) {
+            <img mat-card-image src="{{book.cover}}" alt="book preview">
+          }
+          @else {
+            <app-icon-book></app-icon-book>
+          }
+        </mat-card-content>
+
+        <mat-card-actions class="books-list__item-actions">
+          <button mat-button (click)="editBook($event, book, i)">Edit</button>
+          <button mat-button (click)="deleteBook($event, book)">Delete</button>
+        </mat-card-actions>
+      </mat-card>
+    }
+    @empty {
+      <strong>Whoops, looks like your booklist is empty.</strong>
+    }
+  </div>
+
+  <div class="books-list__controls">
+    <button mat-flat-button (click)="addBook()">+ Add Book</button>
+  </div>
+</article>

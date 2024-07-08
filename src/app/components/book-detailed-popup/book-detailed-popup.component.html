@@ -1,0 +1,32 @@
+<div class="popup container">
+  <!-- "A" grid area  -->
+  <div class="popup__book-cover">
+    @if (data.book.cover) {
+      <img src="{{data.book.cover}}" alt="book preview">
+    }
+    @else {
+      <app-icon-book></app-icon-book>
+    }
+  </div>
+
+  <!-- "B" grid area  -->
+  <div class="popup__main-info">
+    <h2 class="popup__title">Book details</h2>
+    <p class="popup__detailed-info -title">Book title: <span>{{data.book.title}}</span></p>
+    <p class="popup__detailed-info">Publication year: <span>{{data.book.year_of_publication}}</span></p>
+    <p class="popup__detailed-info">Author: <span>{{data.book.author}}</span></p>
+  </div>
+
+  <!-- "C" grid area  -->
+  <p class="popup__description popup__detailed-info">Book description:
+    <span>{{data.book.description ?? 'no description'}}</span>
+  </p>
+
+  <!-- "D" grid area  -->
+  <div class="popup__controls">
+    <button mat-stroked-button (click)="editBook()">Edit</button>
+    <button mat-flat-button (click)="deleteBook()">Delete</button>
+    <button mat-raised-button mat-dialog-close>Close</button>
+  </div>
+</div>
+

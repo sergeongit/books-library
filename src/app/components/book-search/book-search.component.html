@@ -1,0 +1,11 @@
+<mat-form-field class="search">
+  <mat-label>Search</mat-label>
+  <input matInput [formControl]="searchControl" type="text"
+         placeholder="Start to type title or author to find the book...">
+  @if (searchControl.value) {
+    <button class="search__clear-input-button" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearchField()">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+</mat-form-field>
+

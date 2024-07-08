@@ -1,0 +1,42 @@
+<mat-card class="header">
+  <mat-card-header class="header__title">
+    @if (data) {
+    <mat-card-title>{{data.book.title}}</mat-card-title>
+    } @else {
+    <mat-card-title>Adding of a new book</mat-card-title>
+    }
+  </mat-card-header>
+
+  <form class="header__form-group" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="header__input">
+      <mat-label>Book title</mat-label>
+      <input matInput formControlName="title" type="text" placeholder="enter title of the book">
+    </mat-form-field>
+
+    <mat-form-field class="header__input">
+      <mat-label>Year</mat-label>
+      <input matInput formControlName="year_of_publication" type="number" placeholder="enter year of publication">
+    </mat-form-field>
+
+    <mat-form-field class="header__input">
+      <mat-label>Author</mat-label>
+      <input matInput formControlName="author" type="text" placeholder="enter book author">
+    </mat-form-field>
+
+    <mat-form-field class="header__input">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" type="text" placeholder="enter book description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="header__input">
+      <mat-label>Cover</mat-label>
+      <input matInput formControlName="cover" type="url" placeholder="enter URL of image">
+    </mat-form-field>
+
+    <div class="header__controls">
+      <button mat-flat-button class="header__button" type="submit"
+              [disabled]="bookForm.invalid">{{data ? "Save" : "Add new book"}}</button>
+      <button mat-raised-button class="header__button" type="submit" (click)="onClosePopup()">Cancel</button>
+    </div>
+  </form>
+</mat-card>

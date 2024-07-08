@@ -1,0 +1,70 @@
+@import "variables";
+
+:host {
+  display: flex;
+  border: 24px solid #ffd9e1;
+  background: $bg-primary-color;
+}
+
+.popup {
+  display: grid;
+  grid-template-columns: 160px auto;
+  grid-template-rows: 230px auto auto;
+  width: 100%;
+  min-width: 480px;
+  max-width: 600px;
+  gap: 16px;
+  grid-template-areas:
+    "A    B    B"
+    "C    C    C"
+    "D    D    D";
+  border-radius: 12px;
+  background: $bg-secondary-color;
+
+  &__book-cover {
+    grid-area: A;
+    display: flex;
+    max-height: 230px;
+  }
+
+  &__main-info {
+    grid-area: B;
+    display: block;
+    overflow: hidden;
+  }
+
+  &__description {
+    grid-area: C;
+    margin-bottom: 16px;
+  }
+
+  &__controls {
+    grid-area: D;
+    display: flex;
+    gap: 12px;
+    margin: 16px 0 0 auto;
+  }
+
+  &__title {
+    color: $text-secondary-color;
+    margin-bottom: 16px;
+  }
+
+  &__detailed-info {
+    margin-bottom: 8px;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+
+    span {
+      font-weight: 400;
+    }
+
+    &.-title {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

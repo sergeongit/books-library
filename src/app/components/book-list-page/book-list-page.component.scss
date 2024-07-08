@@ -1,0 +1,68 @@
+@import "variables";
+
+:host {
+  width: 100%;
+}
+
+.books-list-header {
+  background: $bg-primary-color;
+}
+
+.books-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+
+  &__title {
+    color: $text-primary-color;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    text-shadow: 8px 6px 4px #ad8080;
+  }
+
+  &__items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__item {
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px;
+    cursor: pointer;
+    opacity: 1;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    color: $text-secondary-color;
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    &.-hidden-animated {
+      visibility: hidden;
+      position: absolute;
+      z-index: -1;
+      width: 0;
+      opacity: 0;
+    }
+  }
+
+  &__book-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    max-height: 320px;
+    margin: 16px 0;
+  }
+
+  &__item-actions {
+    justify-content: flex-end;
+    width: 100%;
+  }
+}
